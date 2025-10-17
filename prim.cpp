@@ -35,18 +35,18 @@ int Prim::returnCostMST(int d, int townId, std::vector<std::unique_ptr<Town>>& t
         cheapest = pq_roads.top();
         pq_roads.pop();
 
-        if (visited[std::get<1>(cheapest)]) continue;
+        if (visited[std::get<1>(cheapest)]) 
+            continue;
 
         cost += std::get<0>(cheapest);
-        int t = std::get<1>(cheapest);
+        townId = std::get<1>(cheapest);
 
-        visited[t] = true;
+        visited[townId] = true;
 
-        for (std::pair<Town*, int>& r : towns[t]->roads)
+        for (std::pair<Town*, int>& r : towns[townId]->roads)
         {
-            if (r.first->district == d && !visited[r.first->id]) {
+            if (!visited[r.first->id])
                 pq_roads.push(std::make_tuple(r.second, r.first->id));
-            }
         }
     }
 
@@ -71,18 +71,18 @@ int Prim::returnCostMST(int townId, std::vector<std::unique_ptr<Town>>& towns, i
         cheapest = pq_roads.top();
         pq_roads.pop();
 
-        if (visited[std::get<1>(cheapest)]) continue;
+        if (visited[std::get<1>(cheapest)]) 
+            continue;
 
         cost += std::get<0>(cheapest);
-        int t = std::get<1>(cheapest);
+        townId = std::get<1>(cheapest);
 
-        visited[t] = true;
+        visited[townId] = true;
 
-        for (std::pair<Town*, int>& r : towns[t]->roads)
+        for (std::pair<Town*, int>& r : towns[townId]->roads)
         {
-            if (!visited[r.first->id]) {
+            if (!visited[r.first->id])
                 pq_roads.push(std::make_tuple(r.second, r.first->id));
-            }
         }
     }
 
