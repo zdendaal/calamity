@@ -23,10 +23,6 @@ Prim::Prim(int t) {
 
 int Prim::returnCostMST(int d, int townId, std::vector<std::unique_ptr<Town>>& towns, int dTownsNum){ // returns MST cost of district d
     int cost = 0;
-    using PQ = std::priority_queue<std::tuple<int,int>, 
-        std::vector<std::tuple<int,int>>, 
-        std::greater<std::tuple<int, int>>>;
-
     std::tuple<int,int> cheapest;
 
     pq_roads.push(std::make_tuple(0, townId));
@@ -58,10 +54,6 @@ int Prim::returnCostMST(int d, int townId, std::vector<std::unique_ptr<Town>>& t
 
 int Prim::returnCostMST(int townId, std::vector<std::unique_ptr<Town>>& towns, int dTownsNum){ // returns MST cost of all nodes in graph
     int cost = 0;
-    using PQ = std::priority_queue<std::tuple<int, int>,    // priority queue for swap delete
-        std::vector<std::tuple<int, int>>,
-        std::greater<std::tuple<int, int>>>;
-
     std::tuple<int, int> cheapest;
 
     // Prim algorithm

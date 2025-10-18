@@ -27,6 +27,10 @@ class Prim {
     std::priority_queue<std::tuple<int,int>,
         std::vector<std::tuple<int, int>>,
         std::greater<std::tuple<int, int>>> pq_roads;
+    
+    using PQ = std::priority_queue<std::tuple<int, int>,    // priority queue for swap delete
+        std::vector<std::tuple<int, int>>,
+        std::greater<std::tuple<int, int>>>;
 
     std::vector<bool> visited;  
     Prim();
