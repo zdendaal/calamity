@@ -41,7 +41,7 @@ int Prim::returnCostMST(int d, int townId, std::vector<std::unique_ptr<Town>>& t
 
         for (std::pair<Town*, int>& r : towns[townId]->roads)
         {
-            if (!visited[r.first->id])
+            if (r.first->district == d && !visited[r.first->id])
                 pq_roads.push(std::make_tuple(r.second, r.first->id));
         }
     }

@@ -11,7 +11,6 @@ BFS::BFS(int startTown){
 }
 
 bool BFS::coverNextDistrictLayer(std::vector<std::unique_ptr<Town>>& towns){ // přiřadí městům distrikty
-    int cost = 0;
     int size = districtTowns.size();
     int id;
     for(int i = layerOffset; i < size; i++){
